@@ -6,7 +6,7 @@ const Product = (props) => {
         <li>
         Product Name : {props.prod.name} {" "}
         Product Price: {props.prod.price}{" "}
-        <button className="btn btn-info">Add To Cart</button><br/>
+        <button onClick={props.counter} className="btn btn-info">Add To Cart</button><br/>
        <img alt="mobile" src= {props.prod.url}/>
         </li>
         </div>

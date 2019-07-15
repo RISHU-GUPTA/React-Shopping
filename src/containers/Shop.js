@@ -4,14 +4,16 @@ import {instance} from '../utils/axiosconfig';
 import Addproduct from '../components/Addproduct';
 import Searchbar from '../components/Searchbar';
 import ButtonAdd from '../components/ButtonAdd';
+import Counter from '../components/Counter';
 class Shop extends Component {
     constructor(props) {
         super(props);
         this.items=[];
         this.inputs={};
         this.arr=[];
+        this.count=0;
         this.flag=true;
-        this.state = {items:this.items,inputs:this.inputs,flag:this.flag  };
+        this.state = {items:this.items,inputs:this.inputs,flag:this.flag,count:this.count };
     }
 
 
@@ -61,13 +63,19 @@ else{
 this.setState({...this.state,items:arr});
 }
 
+counter(){
+    ++this.count;
+    this.setState({...this.state,count:this.count})
+}
+
 render() {
     var display;
     if(this.flag===true){
         display=<div>
         <Searchbar search={this.search.bind(this)}/>
         <ButtonAdd click={this.addclick.bind(this)}/>
-        <Products prods={this.state.items} />
+        <Counter count={this.state.count}/>
+        <Products prods={this.state.items} counter={this.counter.bind(this)} />
         </div>
         
     }
